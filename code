@@ -1,0 +1,14 @@
+//@version=4
+study(title="WOOD VOLUME MAGIC", shorttitle="WOOD VOLUME MAGIC", format=format.volume, resolution="")
+src = close
+obv = cum(sign(change(src)) * volume)
+
+vol3 = (volume+obv+(volume*4))
+vol2 = (volume+obv+(volume*42*(1/volume)))
+
+p1 = plot(vol2, color=color.blue, title="volume")
+p2 = plot(obv, color=color.white, title="OnBalanceVolume", linewidth = 3, transp=20)
+p3 = plot(vol3, color=color.purple, title="OnBalanceVolume", linewidth = 3, transp=20)
+
+fill(p2, p3,color=color.new(#ff33d3,0), title="volume Fill Color")
+//fill(p3, p1,color=color.new(#ff33d3,0), title="volume Fill Color")
